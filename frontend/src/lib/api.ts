@@ -1,6 +1,6 @@
 import { AuthResponse, User, AnalysisResult, AnalyticsData, HistoryResponse, Policy, Recipient } from './types';
 
-const API_BASE = 'http://localhost:8000/api';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
 
 async function fetchWithAuth(url: string, options: RequestInit = {}) {
   const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;

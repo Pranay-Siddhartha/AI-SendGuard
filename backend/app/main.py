@@ -7,10 +7,15 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="SendGuard API")
 
+import os
+
 origins = [
     "http://localhost:3000",
     "http://localhost:3001",
 ]
+frontend_url = os.getenv("FRONTEND_URL")
+if frontend_url:
+    origins.extend([url.strip() for url in frontend_url.split(",")])
 
 app.add_middleware(
     CORSMiddleware,
