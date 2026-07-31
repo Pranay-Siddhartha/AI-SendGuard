@@ -12,10 +12,11 @@ import os
 origins = [
     "http://localhost:3000",
     "http://localhost:3001",
+    "https://ai-send-guard-indol.vercel.app"
 ]
 frontend_url = os.getenv("FRONTEND_URL")
 if frontend_url:
-    origins.extend([url.strip() for url in frontend_url.split(",")])
+    origins.extend([url.strip().rstrip('/') for url in frontend_url.split(",")])
 
 app.add_middleware(
     CORSMiddleware,
