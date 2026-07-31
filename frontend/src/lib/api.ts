@@ -27,7 +27,7 @@ export async function authenticate(username: string, password: string): Promise<
   formData.append('username', username);
   formData.append('password', password);
 
-  const res = await fetch(`${API_BASE}/auth/authenticate`, {
+  const res = await fetch(`${API_BASE}/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: formData.toString(),
